@@ -12,7 +12,7 @@ https://sincere-horn-1cf.notion.site/db0a6196453947c4bcf55f28bd8d4167?v=61e92efd
 # UTS
 https://docs.google.com/document/d/1QVTb28u-Eu3ka8k7ysoYN7hVm5Qu61IPSy03k4F5kzY/edit#heading=h.djy4vgv82skk
 
-Kelompok 6:
+# Kelompok 6
 
 Lailatul Umamah			        081911633019
 
