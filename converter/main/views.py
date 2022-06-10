@@ -18,7 +18,7 @@ from .models import UserStory
 	    #return render(request, 'upload.html', {'form': form})
 
 def index(request):
-	#return HttpResponse("User Story to GUI Converter Main Page")
+	#return HttpResponse("User Story to GUI Converter")
 	#USobjects = UserStory.objects.all
 	return render(request, 'index.html', {})
 	
