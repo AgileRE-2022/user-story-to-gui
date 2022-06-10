@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1>User Story to GUI Converter</h1>
+	<hr>
+	
+	<form method="POST" action="{%url 'index' %}>
+	{% csrf_token %}
+	
+	<br>
+	<h2> User Story </h2>
+	
+	<label for="role" class="form-label">As a/an : </label>
+	<input type="text" id="inputRole" class="form-control" aria-describedby="roleHelp">
+	<div id="roleHelp" class="form-text">
+		For example: customer
+	</div>
+	
+	<br>
+	<label for="task" class="form-label">I want to : </label>
+	<input type="text" id="inputTask" class="form-control" aria-describedby="taskHelp">
+	<div id="taskHelp" class="form-text">
+		For example: apply discount code
+	</div>
+	
+	<br>
+	<label for="benefit" class="form-label">So that I can : </label>
+	<input type="text" id="inputBenefit" class="form-control" aria-describedby="benefitHelp">
+	<div id="benefitHelp" class="form-text">
+		For example: save money
+	</div>
+	
+	<br>
+	<h2> Acceptance Criteria </h2>
+	<label for="initState" class="form-label">Given : </label>
+	<input type="text" id="inputInitState" class="form-control" aria-describedby="initStateHelp">
+	<div id="initStateHelp" class="form-text">
+		For example: I am on "chekckout_page"
+	</div>
+	
+	<br>
+	<label for="action" class="form-label">When : </label>
+	<input type="text" id="inputAction" class="form-control" aria-describedby="actionHelp">
+	<div id="actionHelp" class="form-text">
+		For example: I fill in "discount_code" with "my_code" and I press "apply"
+	</div>
+	
+	<br>
+	<label for="result" class="form-label">Then : </label>
+	<input type="text" id="inputResult" class="form-control" aria-describedby="resultHelp">
+	<div id="resultHelp" class="form-text">
+		For example: I should see "discount_status"
+	</div>
+	<br>
+	
+	<button type="submit" class="btn btn-dark">Submit</button>
+	</form>
+	
+{% endblock %}
