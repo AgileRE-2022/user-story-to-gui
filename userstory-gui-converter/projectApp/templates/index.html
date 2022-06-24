@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Story to GUI Converter</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-5">
+        <h1 class="text-center">User Story to <b>GUI Converter</b></h1>
+        <form method="POST" action="generate">
+          {% csrf_token %}
+
+          <div class="card mt-4">
+            <div class="card-header">
+              <h3>User Story</h3>
+            </div>
+            <div class="card-body">
+              <div class="input-wrapper">
+                <label for="role" class="form-label">As a/an : </label>
+                <input
+                  required
+                  type="text"
+                  id="inputRole"
+                  class="form-control"
+                  aria-describedby="roleHelp"
+                  name="role"
+                />
+                <div id="roleHelp" class="form-text">For example: customer</div>
+              </div>
+
+              <div class="input-wrapper mt-2">
+                <label for="task" class="form-label">I want to : </label>
+                <input
+                  required
+                  type="text"
+                  id="inputTask"
+                  class="form-control"
+                  aria-describedby="taskHelp"
+                  name="task"
+                />
+                <div id="taskHelp" class="form-text">
+                  For example: apply discount code
+                </div>
+              </div>
+
+              <div class="input-wrapper mt-2">
+                <label for="benefit" class="form-label">So that I can : </label>
+                <input
+                  required
+                  type="text"
+                  id="inputBenefit"
+                  class="form-control"
+                  aria-describedby="benefitHelp"
+                  name="benefit"
+                />
+                <div id="benefitHelp" class="form-text">
+                  For example: save money
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-4">
+            <div class="card-header">
+              <h3>Scenarios</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="text-right">
+                    Total scenario: <span id="total_scenario">1</span>
+                  </h5>
+                </div>
+                <div class="col" style="text-align: right !important">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    onclick="addScenario()"
+                    id="btn_add_scenario"
+                  >
+                    Add scenario
+                  </button>
+                </div>
+              </div>
+
+              <div class="card mt-4" id="scenario_card_1">
+                <div class="card-body">
+                  <div class="input-wrapper">
+                    <h6>#1</h6>
+
+                    <label for="scn_name_1" class="form-label">Scenario Name : </label>
+                    <input
+                      type="text"
+                      id="scn_name_1"
+                      class="form-control"
+                      aria-describedby="initStateHelp"
+                      name="scn_name_1"
+                    />
+                    <div id="initStateHelp" class="form-text mb-2">
+                      For example: "no missing fields"
+                    </div>
+
+                    <label for="initState_1" class="form-label">Given : </label>
+                    <input
+                      type="text"
+                      id="initState_1"
+                      class="form-control"
+                      aria-describedby="initStateHelp"
+                      name="initState_1"
+                    />
+                    <div id="initStateHelp" class="form-text mb-2">
+                      For example: I am on "checkout_page"
+                    </div>
+
+                    <label for="action_1" class="form-label">When : </label>
+                    <input
+                      type="text"
+                      id="action_1"
+                      class="form-control"
+                      aria-describedby="action_1"
+                      name="action_1"
+                    />
+                    <div id="actionHelp" class="form-text mb-2">
+                      For example: I fill in "discount_code" with "my_code" and
+                      I press "apply"
+                    </div>
+
+                    <label for="result_1" class="form-label">Then : </label>
+                    <input
+                      type="text"
+                      id="result_1"
+                      class="form-control"
+                      aria-describedby="resultHelp"
+                      name="result_1"
+                    />
+                    <div id="resultHelp" class="form-text mb-2">
+                      For example: I should see "discount_status"
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success mt-3 mb-5">
+            Generate GUI!
+          </button>
+        </form>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function addScenario() {
+        // get id total_scenario
+        var total_scenario = document.getElementById("total_scenario");
+        // get value total_scenario
+        var total_scenario_value = total_scenario.innerHTML;
+        // increment value total_scenario
+        total_scenario_value = parseInt(total_scenario_value) + 1;
+        // set value total_scenario
+        total_scenario.innerHTML = total_scenario_value;
+
+        // append new scenario card
+        var scenario_card = document.getElementById("scenario_card_1");
+        var new_scenario_card = scenario_card.cloneNode(true);
+        new_scenario_card.id = "scenario_card_" + total_scenario_value;
+        new_scenario_card.querySelector("h6").innerHTML =
+          "#" + total_scenario_value;
+
+        
+        new_scenario_card.querySelector("#scn_name_1").name =
+          "scn_name_" + total_scenario_value;
+        new_scenario_card.querySelector("#scn_name_1").id =
+          "scn_name_" + total_scenario_value;
+
+        new_scenario_card.querySelector("#initState_1").name =
+          "initState_" + total_scenario_value;
+        new_scenario_card.querySelector("#initState_1").id =
+          "initState_" + total_scenario_value;
+
+        new_scenario_card.querySelector("#action_1").name =
+          "action_" + total_scenario_value;
+        new_scenario_card.querySelector("#action_1").id =
+          "action_" + total_scenario_value;
+
+        new_scenario_card.querySelector("#result_1").name =
+          "result_" + total_scenario_value;
+        new_scenario_card.querySelector("#result_1").id =
+          "result_" + total_scenario_value;
+
+        document
+          .getElementById("scenario_card_1")
+          .parentNode.appendChild(new_scenario_card);
+      }
+    </script>
+  </body>
+</html>
