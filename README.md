@@ -22,10 +22,18 @@ https://docs.google.com/document/d/1QVTb28u-Eu3ka8k7ysoYN7hVm5Qu61IPSy03k4F5kzY/
 
 
 # Kelompok 6
+
 Lailatul Umamah			        081911633019
+
 Febrina Clementin Sinlae		081911633025
+
 Rachmanita Bintarti Putri		081911633031
+
 Marsya Hania Khalda			    081911633038
+
 Alifia Mutiara Hanifah		  081911633064
+
 Annisafirda Nagano Iseko		081911633056
+
 Aura Aksha Karisma		    	082011633096
+
