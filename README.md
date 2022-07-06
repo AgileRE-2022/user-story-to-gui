@@ -5,7 +5,7 @@ Mengkonversi User Story Scenario ke GUI wireframe
 1. Download file 'User Story to GUI' yang tersedia di GitHub.
 2. Ekstrak file pada folder yang sudah di download.
 3. Membuka Command Prompt untuk menyesuaikan lokasi file yang di download.
-4. Membuat folder baru pada folder static/images untuk menyimpan hasil konversi.
+4. Membuat folder static/images untuk menyimpan hasil konversi.
 5. Melakukan install plantuml dengan memasukkan syntax 'pip install plantuml' di Command Prompt.
 6. Menjalankan server menggunakan python dengan mengetikkan syntax 'manage py run server' di Command Prompt.
 
